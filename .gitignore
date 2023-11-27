@@ -151,7 +151,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+week0/
 # mkdocs documentation
 /site
 
