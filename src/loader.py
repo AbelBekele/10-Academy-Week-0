@@ -60,6 +60,38 @@ class SlackDataLoader:
         write a function to get all the messages from a channel
         
         '''
+        # Find the channel ID based on the provided channel_name
+        channel_messages = []
+
+        channel_id = None
+        for channel in self.channels:
+            if channel['name'] == channel_name:
+                channel_id = channel['id']
+                break
+
+        if channel_id is None:
+            print(f"Channel '{channel_name}' not found.")
+            return channel_messages
+
+        # Construct channel folder path using both channel_name and channel_id
+        channel_folder_path = os.path.join(self.path, channel_name)
+        if not os.path.exists(channel_folder_path):
+            # If the direct channel_name folder doesn't exist, try using channel_id
+            channel_folder_path = os.path.join(self.path, channel_id)
+
+            if not os.path.exists(channel_folder_path):
+                print(f"Folder for channel '{channel_name}' not found.")
+                return channel_messages
+
+        for root, dirs, files in os.walk(channel_folder_path):
+            for file in files:
+                if file.endswith('.json'):
+                    file_path = os.path.join(root, file)
+                    with open(file_path, 'r') as f:
+                        messages = json.load(f)
+                        channel_messages.extend(messages)
+
+        return channel_messages
 
     # 
     def get_user_map(self):
