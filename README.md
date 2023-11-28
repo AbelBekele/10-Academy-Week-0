@@ -137,11 +137,11 @@ Restructured the code by moving functions into `/src/loader.py` and `/src/utils.
 #### Reactions
 - Identify the top 10 messages based on reactions.
   - ***Top 10 Messages - Reactions***
-    ![Alt text](screenshots/image9.png)
+  ![Alt text](screenshots/image9.png)
 #### Mentions
 - Identify the top 10 messages based on mentions.
   - ***Top 10 Messages - Mentions***
-    ![Alt text](screenshots/image8.png)
+  ![Alt text](screenshots/image8.png)
 ### Channel Analysis
 
 - Identify the channel with the highest activity.
