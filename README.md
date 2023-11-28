@@ -150,7 +150,7 @@ Restructured the code by moving functions into `/src/loader.py` and `/src/utils.
     - *Scatter plot*
     ![Alt text](screenshots/image11.png)
     - *channel with the highest activity*
-        ![Alt text](screenshots/image12.png)
+    ![Alt text](screenshots/image12.png)
 
 ### Time Analysis
 
@@ -160,7 +160,7 @@ Restructured the code by moving functions into `/src/loader.py` and `/src/utils.
     - *Scatter plot*
     ![Alt text](screenshots/image13.png)
     - *channel with the highest activity*
-        ![Alt text](screenshots/image14.png)
+    ![Alt text](screenshots/image14.png)
 
 ## Contributing
 Contributions are welcome! Before contributing, please review our contribution guidelines.
