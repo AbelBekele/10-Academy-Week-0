@@ -125,7 +125,7 @@ Restructured the code by moving functions into `/src/loader.py` and `/src/utils.
 #### Reaction Count
 - Identify the top and bottom 10 users based on reaction count.
   - ***Top and Bottom 10 Users - Reaction Count***
-  ![Alt text](screenshots/image-7.png)
+    ![Alt text](screenshots/image-7.png)
 
 ### Top Messages
 
