@@ -19,6 +19,7 @@ This repository combines Data Science and ML Engineering tasks, covering MLOps, 
         - [Day 2 Analysis](#day-2-analysis)
   - [Analysis results](#analysis-results)
       - [Histogram of the time difference](#histogram-of-the-time-difference)
+      - [Message classification, topic modelling, and sentiment analysis](#message-classification-topic-modelling-and-sentiment-analysis)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -119,8 +120,14 @@ Restructured the code by moving functions into `/src/loader.py` and `/src/utils.
   ![Alt text](screenshots/image23.png)
   - **Consecutive events (message, reply, reaction)**
   ![Alt text](screenshots/image24.png)
-
-## Contributing
+###  Message classification, topic modelling, and sentiment analysis 
+  - **Top 10 topics of the different channels**
+    ![Alt text](screenshots/image25.png)
+  - **Sentiment analysis on aggregated messages**
+    ![Alt text](screenshots/image26.png)
+  - **Time series trend of sentiments**
+    ![Alt text](screenshots/image27.png)
+    ![Alt text](screenshots/image28.png)
 Contributions are welcome! Before contributing, please review our contribution guidelines.
 
 ##  License
