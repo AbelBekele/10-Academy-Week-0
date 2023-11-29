@@ -16,8 +16,12 @@ This repository combines Data Science and ML Engineering tasks, covering MLOps, 
     - [Code Organization](#code-organization)
     - [Notebooks](#notebooks)
         - [Day 1 Analysis](#day-1-analysis)
+        - [Day 2 Analysis](#day-2-analysis)
+  - [Analysis results](#analysis-results)
+      - [Histogram of the time difference](#histogram-of-the-time-difference)
   - [Contributing](#contributing)
   - [License](#license)
+
 
 ## Goals to Achieve
 
@@ -93,17 +97,28 @@ In this repository, the branches are organized as follows:
   ```bash
   git checkout -b task-2
     ```
-
-
 ### Code Organization
 
 Restructured the code by moving functions into `/src/loader.py` and `/src/utils.py`. In the analysis notebooks, used the `SlackDataLoader` from `/src/loader.py` and functions from `/src/utils.py` for data loading needs.
 
 ## Notebooks
 ### Day 1 Analysis
-`/notebooks/EDA.ipynb`
+  - `/notebooks/EDA.ipynb`
+### Day 2 Analysis
+  - `/notebooks/Time difference analysis.ipynb`
+  - `/notebooks/ML model task2.ipynb`
 
-## Analysis Results
+## Analysis results
+
+### Histogram of the time difference
+  - **Consecutive messages** 
+  ![Alt text](screenshots/image21.png)
+  - **Consecutive replies** 
+  ![Alt text](screenshots/image22.png)
+  - **Consecutive reactions**
+  ![Alt text](screenshots/image23.png)
+  - **Consecutive events (message, reply, reaction)**
+  ![Alt text](screenshots/image24.png)
 
 ## Contributing
 Contributions are welcome! Before contributing, please review our contribution guidelines.

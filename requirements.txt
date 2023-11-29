@@ -7,3 +7,7 @@ argparse
 jupyter
 poetry
 pytest
+sklearn
+scikit-learn
+textblob
+mlflow
