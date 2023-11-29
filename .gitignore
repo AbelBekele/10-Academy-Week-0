@@ -157,3 +157,6 @@ week0/
 
 # mypy
 .mypy_cache/
+
+#mlflow folders
+mlruns/

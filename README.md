@@ -1,12 +1,12 @@
-# Welcome to Week-0 Task-1 of 10 Academy's intensive training program!
+# Welcome to Week-0 Task-2 of 10 Academy's intensive training program!
 
 ## Overview
 
-This project focuses on leveraging Git and GitHub for version control, setting up a Python environment, implementing continuous integration and continuous deployment (CI/CD), and employing key performance indicators (KPIs) related to development environment setup and relevant skills. The project also involves utilizing the CRISP-DM framework for project planning and conducting exploratory data analysis (EDA) and statistical thinking.
+This repository combines Data Science and ML Engineering tasks, covering MLOps, analysis pipelines, and ML engineering. In Data Science, explore MLOps components, analysis pipelines, time series analysis, and message classification. On the ML Engineering side, delve into feature stores, model versioning, monitoring, CI implementation, Dockerization, and Python package building. KPIs include mastering Software Engineering and MLOps concepts. We will be summarizing MLOps, answering time-related questions, building ML models, and versioning with MLFlow. Contribute and enhance our Data Science and ML Engineering—happy coding!
 
 ## Table of Contents
 
-- [Project Title](#Welcome-to-Week-0-Task-1-of-10-Academy's-intensive-training-program!)
+- [Project Title](#Welcome-to-Week-0-Task-2-of-10-Academy's-intensive-training-program!)
   - [Overview](#overview)
   - [Goals to Achieve](#goals-to-achieve)
   - [Installation](#installation)
@@ -16,25 +16,20 @@ This project focuses on leveraging Git and GitHub for version control, setting u
     - [Code Organization](#code-organization)
     - [Notebooks](#notebooks)
         - [Day 1 Analysis](#day-1-analysis)
-    - [Analysis Results](#analysis-results)
-        - [Top and Bottom 10 Users](#top-and-bottom-users)
-            - [By Reply Count](#Reply-Count)
-            - [By Mention Count](#Mention-Count)
-            - [By Message Count](#Message-Count)
-        - [Top 10 Messages](#top-messages)
-            - [By Reply Count](#Replies)
-            - [By Mention Count](#Reactions)
-            - [By Message Count](#Mentions)
-        - [Channel Analysis](#channel-analysis)
-        - [Time Analysis](#time-analysis)
+        - [Day 2 Analysis](#day-2-analysis)
+  - [Analysis results](#analysis-results)
+      - [Histogram of the time difference](#histogram-of-the-time-difference)
   - [Contributing](#contributing)
   - [License](#license)
 
+
 ## Goals to Achieve
 
-- **Dev Environment Setup:** Successfully set up the Python environment, Git version control, and CI/CD.
-- **Relevant Skills Demonstration:** Showcase proficiency in the CRISP-DM framework, data understanding, EDA techniques, and statistical thinking.
-- **Project Planning - EDA & Stats:** Effectively plan and execute the project using the CRISP-DM framework, perform EDA, and derive actionable insights from statistical analyses.
+- **MLOps & Pipelines:** Explore MLOps components, analysis pipelines for efficient data processing.
+- **Data Science Skills:** Enhance time series analysis, message classification, and statistical thinking.
+- **ML Engineering Proficiency:** Implement feature stores, model versioning, monitoring, CI, Dockerization, and package building.
+- **ML Model Excellence:** Build accurate, interpretable, and scalable ML models.
+- **MLFlow Versioning:** Utilize MLFlow for effective model versioning, ensuring traceability and reproducibility.
 
 ## Installation
 
@@ -88,79 +83,42 @@ To get started with the project, follow these installation steps:
 
 In this repository, the branches are organized as follows:
 
-- **main:** The main branch, initially forked from [https://github.com/10xac/week0_starter_network_analysis](https://github.com/10xac/week0_starter_network_analysis).
+- **main:** The main branch
+    - Containing all working and updated branch pushes    
 
-- **task-1:** The current branch for Day 1 analysis. 
+- **task-1:** The branch for Day 1 analysis.
+    - **Dev Environment Setup:** Successfully set up the Python environment, Git version control, and CI/CD.
+    - **Relevant Skills Demonstration:** Showcase proficiency in the CRISP-DM framework, data understanding, EDA techniques, and statistical thinking.
+    - **Project Planning - EDA & Stats:** Effectively plan and execute the project using the CRISP-DM framework, perform EDA, and derive actionable insights from statistical analyses.
+
+- **task-2:** The current branch for Day 2 analysis. 
+    - 
 
   ```bash
-  git checkout -b task-1
+  git checkout -b task-2
     ```
-
-
 ### Code Organization
 
 Restructured the code by moving functions into `/src/loader.py` and `/src/utils.py`. In the analysis notebooks, used the `SlackDataLoader` from `/src/loader.py` and functions from `/src/utils.py` for data loading needs.
 
 ## Notebooks
 ### Day 1 Analysis
-`/notebooks/EDA.ipynb`
+  - `/notebooks/EDA.ipynb`
+### Day 2 Analysis
+  - `/notebooks/Time difference analysis.ipynb`
+  - `/notebooks/ML model task2.ipynb`
 
-## Analysis Results
+## Analysis results
 
-### Top and Bottom Users
-
-#### Reply Count
-- Identify the top and bottom 10 users based on reply count.
-  - ***Top and Bottom 10 Users - Reply Count***
-   ![Alt text](screenshots/image-4.png)
-#### Mention Count
-- Identify the top and bottom 10 users based on mention count.
-  - ***Top and Bottom 10 Users - Mention Count***
-    ![Alt text](screenshots/image-5.png)
-#### Message Count
-- Identify the top and bottom 10 users based on message count.
-  - ***Top and Bottom 10 Users - Message Count***
-    ![Alt text](screenshots/image-6.png)
-
-#### Reaction Count
-- Identify the top and bottom 10 users based on reaction count.
-  - ***Top and Bottom 10 Users - Reaction Count***
-    ![Alt text](screenshots/image-7.png)
-
-### Top Messages
-
-#### Replies
-- Identify the top 10 messages based on replies.
-  - ***Top 10 Messages - Replies***
-  ![Alt text](screenshots/image.png)
-
-#### Reactions
-- Identify the top 10 messages based on reactions.
-  - ***Top 10 Messages - Reactions***
-  ![Alt text](screenshots/image9.png)
-#### Mentions
-- Identify the top 10 messages based on mentions.
-  - ***Top 10 Messages - Mentions***
-  ![Alt text](screenshots/image8.png)
-### Channel Analysis
-
-- Identify the channel with the highest activity.
-- Determine the channel appearing at the right top corner in a 2D scatter plot (x-axis: number of messages, y-axis: sum of replies and reactions, color: channels).
-***Channel Analysis***
-    - *Scatter plot*
-    ![Alt text](screenshots/image11.png)
-    - *channel with the highest activity*
-    ![Alt text](screenshots/image12.png)
-
-### Time Analysis
-
-- Determine the fraction of messages replied within the first 5 minutes.
-- Plot a 2D scatter plot (x-axis: time difference between message timestamp and first reply, y-axis: time of the day, color: channels).
-***Channel Analysis***
-    - *Scatter plot*
-    ![Alt text](screenshots/image13.png)
-    - *channel with the highest activity*
-    ![Alt text](screenshots/image14.png)
+### Histogram of the time difference
+  - **Consecutive messages** 
+  ![Alt text](screenshots/image21.png)
+  - **Consecutive replies** 
+  ![Alt text](screenshots/image22.png)
+  - **Consecutive reactions**
+  ![Alt text](screenshots/image23.png)
+  - **Consecutive events (message, reply, reaction)**
+  ![Alt text](screenshots/image24.png)
 
 ## Contributing
 Contributions are welcome! Before contributing, please review our contribution guidelines.

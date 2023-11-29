@@ -1,15 +1,17 @@
-import os
-import sys
+import datetime
 import glob
 import json
-import datetime
-from collections import Counter
+import os
+import re
+import sys
 from collections import Counter
 
 import pandas as pd
-from matplotlib import pyplot as plt
 import seaborn as sns
+from matplotlib import pyplot as plt
 from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
 
 
 def break_combined_weeks(combined_weeks):
@@ -181,5 +183,27 @@ def convert_2_timestamp(column, data):
         return timestamp_
     else: print(f"{column} not in data")
 
-
+def clean_text(text):
+    # Convert to lowercase
+    text = text.lower()
+    
+    # Remove special characters and mentions
+    text = re.sub(r'<@[^>]+>', '', text)
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    
+    # Tokenization using NLTK
+    tokens = word_tokenize(text)
+    
+    # Remove stopwords
+    stop_words = set(stopwords.words('english'))
+    tokens = [word for word in tokens if word not in stop_words]
+    
+    # Stemming using NLTK PorterStemmer
+    stemmer = PorterStemmer()
+    tokens = [stemmer.stem(word) for word in tokens]
+    
+    # Join tokens back into a single string
+    cleaned_text = ' '.join(tokens)
+    
+    return cleaned_text
 

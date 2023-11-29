@@ -25,4 +25,3 @@ run:
 
 test:
 	poetry run pytest tests
-

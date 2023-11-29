@@ -5,3 +5,9 @@ pick==2.2.0
 seaborn==0.13.0
 argparse
 jupyter
+poetry
+pytest
+sklearn
+scikit-learn
+textblob
+mlflow

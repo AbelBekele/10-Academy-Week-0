@@ -1,12 +1,15 @@
-[tool.isort]
-profile = "black"
+[tool.poetry]
+name = "10-academy-week-0"
+version = "0.1.0"
+description = "Slack Network analysis"
+authors = ["Abel Bekele <abelbekele.addise@gmail.com>"]
+license = "MIT"
+readme = "README.md"
 
-[tool.pytest.ini_options]
-addopts = """
---cov-report term-missing \
---cov src -ra"""
+[tool.poetry.dependencies]
+python = "^3.11"
 
-[tool.coverage.report]
-fail_under = 0
-show_missing = true
-exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
