@@ -13,7 +13,7 @@ const WebAnalyticsCard = () => {
         }
         const data = await response.json();
         
-        const sortedData = data.channel_activity.slice(0, 5).sort((a, b) => b.value - a.value);
+        const sortedData = data.channel_activity.slice(0, 6).sort((a, b) => b.value - a.value);
         setChannelData(sortedData);
       } catch (error) {
         console.error('Error fetching channel data:', error);

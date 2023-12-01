@@ -1,3 +1,4 @@
+from collections import Counter, defaultdict
 from datetime import datetime
 
 from flask import Flask, jsonify, request
@@ -33,6 +34,15 @@ class channel_activity(db.Model):
     def __repr__(self):
         return f"Channel_activity: id={self.id}, messages_count={self.Message_count}, reply_count={self.Reply_and_Reaction_count}"
 
+class channel_messages_ts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    channel_name = db.Column(db.String(50), nullable=False)
+    text = db.Column(db.String(255), nullable=False)
+    timestamp_events = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"Channel_messages_ts: id={self.id}, channel_name={self.channel_name}, text={self.text}, timestamp_events={self.timestamp_events}"
+
 @app.route('/channel_activity', methods=['GET'])
 def get_channel_activity():
     channel_data = channel_activity.query.all()
@@ -47,6 +57,89 @@ def get_channel_activity():
 
     return jsonify({'channel_activity': channel_list})
 
+@app.route('/channel_activity_ts', methods=['GET'])
+def get_channel_activity_ts():
+    channel_data = channel_messages_ts.query.filter(
+        (channel_messages_ts.channel_name == 'all-community-building') |
+        (channel_messages_ts.channel_name == 'all-resources')
+    ).all()
+
+    # Check if there's any data
+    if not channel_data:
+        return jsonify({'channel_activity_ts': []})
+
+    # Extract the first and last timestamps
+    min_timestamp = min(channel.timestamp_events for channel in channel_data)
+    max_timestamp = max(channel.timestamp_events for channel in channel_data)
+
+    # Convert string timestamps to datetime objects
+    try:
+        min_timestamp = datetime.strptime(min_timestamp, '%Y-%m-%d %H:%M:%S.%f')
+        max_timestamp = datetime.strptime(max_timestamp, '%Y-%m-%d %H:%M:%S.%f')
+    except ValueError:
+        min_timestamp = datetime.strptime(min_timestamp, '%Y-%m-%d %H:%M:%S')
+        max_timestamp = datetime.strptime(max_timestamp, '%Y-%m-%d %H:%M:%S')
+
+    # Calculate date ranges
+    date_ranges = [
+        min_timestamp + i * ((max_timestamp - min_timestamp) / 5)
+        for i in range(6)
+    ]
+
+    # Create a dictionary to store data grouped by date and channel
+    data_dict = defaultdict(lambda: defaultdict(int))
+
+    for channel in channel_data:
+        # Convert string timestamp to datetime object
+        channel_timestamp = datetime.strptime(channel.timestamp_events, '%Y-%m-%d %H:%M:%S')
+
+        # Find the corresponding date range for the timestamp
+        date_range = next(
+            (date_ranges[i] for i in range(5) if date_ranges[i] <= channel_timestamp <= date_ranges[i + 1]),
+            date_ranges[-1]
+        )
+
+        # Extract month and year from the date range
+        month_year = date_range.strftime('%b %y')
+
+        # Update the corresponding channel count based on the channel name
+        data_dict[month_year][channel.channel_name] += 1  # Increment count by 1
+
+    # Convert the dictionary to the required format
+    chartdata = [
+        {
+            "date": date,
+            "all-community-building": data_dict[date]["all-community-building"],
+            "all-resources": data_dict[date]["all-resources"],
+        }
+        for date in data_dict
+    ]
+
+    return jsonify({'channel_activity_ts': chartdata})
+
+@app.route('/top_channel_messages', methods=['GET'])
+def get_top_channel_messages():
+    # Retrieve the text column and channel_name from the database
+    messages = channel_messages_ts.query.filter(channel_messages_ts.text.isnot(None)).all()
+
+    # Extract text and channel_name from each message
+    message_data = [(message.text.lower(), message.channel_name) for message in messages]
+
+    # Calculate the frequency of each unique text and channel_name combination
+    text_freq = Counter(message_data)
+
+    # Display the top 10 most repeated full texts along with channel_name
+    top_repeated_texts = text_freq.most_common(15)
+
+    top_messages_list = []
+    for (text, channel_name), count in top_repeated_texts:
+        top_messages_list.append({
+            "text": text,
+            "channel_name": channel_name,
+            "count": count
+        })
+
+    return jsonify({'top_channel_messages': top_messages_list})
 
 @app.route('/')
 def hello():

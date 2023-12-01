@@ -1,9 +1,8 @@
-# Welcome to Week-0 Task-2 of 10 Academy's intensive training program!
+# Welcome to Week-0 Task-4 of 10 Academy's intensive training program!
 
 ## Overview
 
-This repository combines Data Science and ML Engineering tasks, covering MLOps, analysis pipelines, and ML engineering. In Data Science, explore MLOps components, analysis pipelines, time series analysis, and message classification. On the ML Engineering side, delve into feature stores, model versioning, monitoring, CI implementation, Dockerization, and Python package building. KPIs include mastering Software Engineering and MLOps concepts. We will be summarizing MLOps, answering time-related questions, building ML models, and versioning with MLFlow. Contribute and enhance our Data Science and ML Engineering—happy coding!
-
+This repository seamlessly merges Data Science and ML Engineering, featuring MLOps, analysis pipelines, and frontend-backend integration. Explore time series analysis, message classification, feature stores, and more. Master Software Engineering and MLOps concepts while building ML models with React and Tailwind CSS on the frontend, and Flask on the backend. Contribute to this dynamic blend of technologies—happy coding!
 ## Table of Contents
 
 - [Project Title](#Welcome-to-Week-0-Task-2-of-10-Academy's-intensive-training-program!)
@@ -109,25 +108,7 @@ Restructured the code by moving functions into `/src/loader.py` and `/src/utils.
   - `/notebooks/Time difference analysis.ipynb`
   - `/notebooks/ML model task2.ipynb`
 
-## Analysis results
-
-### Histogram of the time difference
-  - **Consecutive messages** 
-  ![Alt text](screenshots/image21.png)
-  - **Consecutive replies** 
-  ![Alt text](screenshots/image22.png)
-  - **Consecutive reactions**
-  ![Alt text](screenshots/image23.png)
-  - **Consecutive events (message, reply, reaction)**
-  ![Alt text](screenshots/image24.png)
-###  Message classification, topic modelling, and sentiment analysis 
-  - **Top 10 topics of the different channels**
-    ![Alt text](screenshots/image25.png)
-  - **Sentiment analysis on aggregated messages**
-    ![Alt text](screenshots/image26.png)
-  - **Time series trend of sentiments**
-    ![Alt text](screenshots/image27.png)
-    ![Alt text](screenshots/image28.png)
+## Contributions
 Contributions are welcome! Before contributing, please review our contribution guidelines.
 
 ##  License
