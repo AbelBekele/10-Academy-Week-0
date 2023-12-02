@@ -13,7 +13,7 @@ import {
 } from "@tremor/react";
 import { HiOutlineStatusOnline } from "react-icons/hi";
 
-const MAX_WORDS = 10; // Set your desired maximum word limit
+const MAX_WORDS = 2; // Set your desired maximum word limit
 
 const truncateText = (text) => {
   const words = text.split(" ");

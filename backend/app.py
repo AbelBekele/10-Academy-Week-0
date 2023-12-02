@@ -4,6 +4,7 @@ from datetime import datetime
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 
 app = Flask(__name__) # where we initialzed our app
 # by default the flask run in production
@@ -42,6 +43,16 @@ class channel_messages_ts(db.Model):
 
     def __repr__(self):
         return f"Channel_messages_ts: id={self.id}, channel_name={self.channel_name}, text={self.text}, timestamp_events={self.timestamp_events}"
+
+class channel_messages_sentiment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    channel = db.Column(db.String(50), nullable=False)
+    text = db.Column(db.String(255), nullable=False)
+    sentiment_score = db.Column(db.Float, nullable=False)
+    sentiment = db.Column(db.String(50), nullable=False)
+
+    def __repr__(self):
+        return f"Channel_messages_sentiment: id={self.id}, channel={self.channel}, text={self.text}, sentiment_score={self.sentiment_score}, sentiment={self.sentiment}"
 
 @app.route('/channel_activity', methods=['GET'])
 def get_channel_activity():
@@ -140,6 +151,25 @@ def get_top_channel_messages():
         })
 
     return jsonify({'top_channel_messages': top_messages_list})
+
+@app.route('/channel_messages_sentiment', methods=['GET'])
+def get_channel_messages_sentiment():
+    # Use SQLAlchemy's func.avg to calculate average sentiment_score per channel
+    avg_sentiment_data = db.session.query(
+        channel_messages_sentiment.channel,
+        func.avg(channel_messages_sentiment.sentiment_score).label('average_sentiment_score')
+    ).group_by(channel_messages_sentiment.channel).all()
+ 
+    avg_sentiment_list = []
+
+    for avg_sentiment in avg_sentiment_data:
+        avg_sentiment_list.append({
+            "channel": avg_sentiment.channel,
+            "average_sentiment_score": avg_sentiment.average_sentiment_score,
+        })
+
+    return jsonify({'average_sentiment_per_channel': avg_sentiment_list})
+
 
 @app.route('/')
 def hello():
